@@ -3,11 +3,13 @@ import keyboard
 
 from mouse_engine import *
 from mapper import *
-from controller import *
+from controller import controller
+from config import *
 
 width, height = screen_size()
 
-print(width, height)
+sx = 0.0
+sy = 0.0
 
 while True:
 
@@ -16,19 +18,27 @@ while True:
 
     mx, my = mouse_position()
 
-    x = normalize(mx, 0, width)
-    y = normalize(my, 0, height)
+    nx = normalize(mx, 0, width)
+    ny = normalize(my, 0, height)
 
-    x = (x * 2) - 1
-    y = (y * 2) - 1
+    nx = nx * 2 - 1
+    ny = ny * 2 - 1
 
-    y *= -1
+    ny *= -1
 
-    update(
-        remap(x),
-        remap(y)
+    nx, ny = apply_deadzone(nx, ny, DEADZONE)
+
+    nx = apply_curve(nx, CURVE)
+    ny = apply_curve(ny, CURVE)
+
+    sx += (nx - sx) * SMOOTHING
+    sy += (ny - sy) * SMOOTHING
+
+    controller.left_stick(
+        stick(sx),
+        stick(sy)
     )
 
-    time.sleep(1 / 240)
+    time.sleep(1 / FPS)
 
-update(0, 0)
+controller.left_stick(0, 0)

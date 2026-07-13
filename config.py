@@ -1,9 +1,7 @@
-# Screen mapping
+DEADZONE = 0.04
 
-DEADZONE = 0.03
+CURVE = 1.7
 
-SMOOTHING = 0.12
+SMOOTHING = 0.15
 
 FPS = 240
-
-CENTER_ON_START = True

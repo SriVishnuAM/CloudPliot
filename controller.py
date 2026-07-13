@@ -1,13 +1,26 @@
 import vgamepad as vg
 
-gamepad = vg.VX360Gamepad()
+pad = vg.VX360Gamepad()
 
 
-def update(x, y):
+class Controller:
 
-    gamepad.left_joystick(
-        x_value=x,
-        y_value=y
-    )
+    def __init__(self):
 
-    gamepad.update()
+        self.x = 0
+        self.y = 0
+
+    def left_stick(self, x, y):
+
+        self.x = x
+        self.y = y
+
+        pad.left_joystick(
+            x_value=x,
+            y_value=y
+        )
+
+        pad.update()
+
+
+controller = Controller()
