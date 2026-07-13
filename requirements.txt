@@ -1,0 +1,5 @@
+vgamepad
+pynput
+pywin32
+keyboard
+mouse

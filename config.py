@@ -1,0 +1,9 @@
+# Screen mapping
+
+DEADZONE = 0.03
+
+SMOOTHING = 0.12
+
+FPS = 240
+
+CENTER_ON_START = True
