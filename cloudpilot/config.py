@@ -1,7 +1,0 @@
-DEADZONE = 0.04
-
-CURVE = 1.7
-
-SMOOTHING = 0.15
-
-FPS = 240
